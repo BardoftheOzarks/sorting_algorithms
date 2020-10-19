@@ -6,7 +6,7 @@
  */
 void bubble_sort(int *array, size_t size)
 {
-	unsigned long int master, swapper, temp;
+	unsigned int master, swapper, temp;
 
 	if (!array)
 		return;
