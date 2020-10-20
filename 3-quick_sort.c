@@ -16,6 +16,7 @@ void quick_sort(int *array, size_t size)
  * @array: array to be sorted
  * @low: lowest placement index to be sorted
  * @high: highest placement index to be sorted
+ * @size: size of array
  */
 void sort(int *array, int low, int high, size_t size)
 {
@@ -29,8 +30,10 @@ void sort(int *array, int low, int high, size_t size)
 }
 /**
  * partition - partitions an array by the placement of the last element
+ * @array: array being sorted
  * @high: highest index in array
  * @low: lowest index in array
+ * @size: size of array
  * Return: the index of the sorted pivot point
  */
 int partition(int *array, int low, int high, size_t size)
