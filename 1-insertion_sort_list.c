@@ -16,15 +16,12 @@ void insertion_sort_list(listint_t **list)
 		while (current->n > current->prev->n)
 			current = current->next;
 		/*set place marker for reference*/
-		marker = current->next;
+		marker = current->prev;
 		/*find where current node belongs*/
 		while (current->prev && current->n < current->prev->n)
 			node_swap(list, current->prev, current);
 		/*rinse and repeat*/
-		if (marker)
-			current = marker->prev;
-		else
-			break;
+		current = marker;
 	}
 }
 /**
