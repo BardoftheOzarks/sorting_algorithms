@@ -13,7 +13,7 @@ void insertion_sort_list(listint_t **list)
 	while (current)
 	{
 		/*find first inconsistency*/
-		while (current->n >= current->prev->n)
+		while (current->n > current->prev->n)
 			current = current->next;
 		/*set place marker for reference*/
 		marker = current->next;
