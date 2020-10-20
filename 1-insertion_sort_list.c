@@ -7,10 +7,10 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *current, *marker;
 
-	if (!list || !(*list) || !(*list)->next /*|| !(*list)->next->next*/)
+	if (!list || !(*list) || !(*list)->next)
 		return;
 	current = (*list)->next;
-	while (current)
+	while (current->next)
 	{
 		/*find first inconsistency*/
 		while (current->n > current->prev->n)
@@ -21,7 +21,10 @@ void insertion_sort_list(listint_t **list)
 		while (current->prev && current->n < current->prev->n)
 			node_swap(list, current->prev, current);
 		/*rinse and repeat*/
-		current = marker;
+		if (marker)
+			current = marker->prev;
+		else
+			break;
 	}
 }
 /**
