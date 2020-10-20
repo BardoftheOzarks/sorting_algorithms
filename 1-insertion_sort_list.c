@@ -14,7 +14,11 @@ void insertion_sort_list(listint_t **list)
 	{
 		/*find first inconsistency*/
 		while (current->n > current->prev->n)
+		{
+			if (!current->next)
+				return;
 			current = current->next;
+		}
 		/*set place marker for reference*/
 		marker = current->next;
 		/*find where current node belongs*/
