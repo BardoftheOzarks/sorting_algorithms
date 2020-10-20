@@ -10,13 +10,13 @@ void insertion_sort_list(listint_t **list)
 	if (!list || !(*list) || !(*list)->next)
 		return;
 	current = (*list)->next;
-	while (current->next)
+	while (current)
 	{
 		/*find first inconsistency*/
 		while (current->n > current->prev->n)
 			current = current->next;
 		/*set place marker for reference*/
-		marker = current->prev;
+		marker = current->next;
 		/*find where current node belongs*/
 		while (current->prev && current->n < current->prev->n)
 			node_swap(list, current->prev, current);
