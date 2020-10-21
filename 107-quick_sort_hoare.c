@@ -9,6 +9,8 @@ void quick_sort_hoare(int *array, size_t size)
 	int high = size - 1;
 	int low = 0;
 
+	if (!array || size < 2)
+		return;
 	sort(array, low, high, size);
 }
 /**
@@ -26,7 +28,7 @@ void sort(int *array, int low, int high, size_t size)
 		return;
 	part = partition(array, low, high, size);
 	sort(array, low, part - 1, size);
-	sort(array, part + 1, high, size);
+	sort(array, part, high, size);
 }
 /**
  * partition - partitions an array by the placement of the last element
@@ -49,9 +51,12 @@ int partition(int *array, int low, int high, size_t size)
 		while (array[j] > pivot)
 			j--;
 		if (i >= j)
-			return (j);
-/*		printf("i: %d, j: %d\n", array[i], array[j]);*/
-		swap(&array[i], &array[j]);
+		{
+/*			printf("Pivot point at: %d\n", j);
+ */			return (j);
+		}
+/*		printf("i: %d, j: %d\n", array[i], array[j]);
+ */		swap(&array[i], &array[j]);
 		print_array(array, size);
 	}
 }
