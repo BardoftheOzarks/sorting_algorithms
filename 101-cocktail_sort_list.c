@@ -5,10 +5,11 @@
  */
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *low = NULL, *high = NULL, *mover = *list;
+	listint_t *low = NULL, *high = NULL, *mover;
 
 	if (!list || !(*list) || !(*list)->next)
 		return;
+	mover = *list;
 	while (1)
 	{
 		while (mover->next != high)
