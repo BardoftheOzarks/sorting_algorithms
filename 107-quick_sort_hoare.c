@@ -39,16 +39,18 @@ void sort(int *array, int low, int high, size_t size)
 int partition(int *array, int low, int high, size_t size)
 {
 	int pivot = array[high];
+	int i = low;
+	int j = high;
 
 	while (1)
 	{
-		while (array[low] && array[low] <= pivot)
-			low++;
-		while (array[high] > pivot)
-			high--;
-		if (low >= high)
-			return (high);
-		swap(&array[low], &array[high]);
+		while (array[i] && array[i] < pivot)
+			i++;
+		while (array[j] && array[j] > pivot)
+			j--;
+		if (i >= j)
+			return (j);
+		swap(&array[i], &array[j]);
 		print_array(array, size);
 	}
 }
