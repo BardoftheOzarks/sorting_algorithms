@@ -26,7 +26,7 @@ void sort(int *array, int low, int high, size_t size)
 		return;
 	part = partition(array, low, high, size);
 	sort(array, low, part - 1, size);
-	sort(array, part + 1, high, size);
+	sort(array, part, high, size);
 }
 /**
  * partition - partitions an array by the placement of the last element
@@ -39,18 +39,27 @@ void sort(int *array, int low, int high, size_t size)
 int partition(int *array, int low, int high, size_t size)
 {
 	int pivot = array[high];
-	int i = low;
-	int j = high;
+	int i = low - 1;
+	int j = high + 1;
 
 	while (1)
 	{
-		while (array[i] && array[i] < pivot)
+		do
+		{
 			i++;
-		while (array[j] && array[j] > pivot)
+		}
+		while (i < high && array[i] < pivot);
+		do
+		{
 			j--;
+		}
+		while (j > low && array[j] > pivot);
 		if (i >= j)
-			return (j);
-		swap(&array[i], &array[j]);
+		{
+			return (i);
+		}
+/*		printf("Swap: %d, %d\n", array[i], array[j]);
+ */		swap(&array[i], &array[j]);
 		print_array(array, size);
 	}
 }
